@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Borndata = require('./models/borndata');
-const country = require('./models/countrydata')
+const country = require('./models/countrydata');
+const yearsofrecidence = require('./models/yearsofrecidence');
+
 require('dotenv').config();
 
 const app = express();
@@ -51,6 +53,21 @@ app.get('/countries', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch countries.' });
   }
 });
+
+
+// Fetch all yearsofrecidence
+app.get('/yearsofrecidence', async (req, res) => {
+    try {
+      const allyearsofrecidence = await yearsofrecidence.find(); // Await the asynchronous operation
+      console.log(allyearsofrecidence)
+      res.status(200).json(allyearsofrecidence);
+    } catch (error) {
+      console.error('Error fetching countries:', error);
+      res.status(500).json({ message: 'Failed to fetch countries.' });
+    }
+  });
+
+
 
 // Calculate sum
 app.post('/calculate', (req, res) => {
