@@ -84,6 +84,18 @@ app.get('/numbercountries', async (req, res) => {
     }
   });
 
+// Fetch all traveledcountries
+app.get('/traveledcountries', async (req, res) => {
+    try {
+      const alltraveledcountries = await traveledcountries.find(); // Await the asynchronous operation
+      console.log(alltraveledcountries)
+      res.status(200).json(alltraveledcountries);
+    } catch (error) {
+      console.error('Error fetching traveledcountries:', error);
+      res.status(500).json({ message: 'Failed to fetch traveledcountries.' });
+    }
+  });
+
 
 // Calculate sum
 app.post('/calculate', (req, res) => {
