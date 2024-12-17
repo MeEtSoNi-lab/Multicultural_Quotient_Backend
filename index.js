@@ -109,12 +109,24 @@ app.get('/languageconverse', async (req, res) => {
   });
 
 
-// Fetch all languageconverse
+// Fetch all culturalfood
 app.get('/culturalfood', async (req, res) => {
     try {
-      const alllculturalfood = await culturalfood.find(); // Await the asynchronous operation
-      console.log(alllculturalfood)
+      const allculturalfood = await culturalfood.find(); // Await the asynchronous operation
+      console.log(allculturalfood)
       res.status(200).json(allculturalfood);
+    } catch (error) {
+      console.error('Error fetching culturalfood:', error);
+      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+    }
+  });
+
+// Fetch all contentengagement
+app.get('/contentengagement', async (req, res) => {
+    try {
+      const allcontentengagement = await contentengagement.find(); // Await the asynchronous operation
+      console.log(allcontentengagement)
+      res.status(200).json(allcontentengagement);
     } catch (error) {
       console.error('Error fetching culturalfood:', error);
       res.status(500).json({ message: 'Failed to fetch culturalfood.' });
