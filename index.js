@@ -85,14 +85,14 @@ app.get('/numbercountries', async (req, res) => {
   });
 
 // Fetch all traveledcountries
-app.get('/culturalfood', async (req, res) => {
+app.get('/traveledcountries', async (req, res) => {
     try {
-      const allculturalfood = await culturalfood.find(); // Await the asynchronous operation
-      console.log(allculturalfood)
-      res.status(200).json(allculturalfood);
+      const alltraveledcountries = await traveledcountries.find(); // Await the asynchronous operation
+      console.log(alltraveledcountries)
+      res.status(200).json(alltraveledcountries);
     } catch (error) {
       console.error('Error fetching traveledcountries:', error);
-      res.status(500).json({ message: 'Failed to fetch allculturalfood.' });
+      res.status(500).json({ message: 'Failed to fetch traveledcountries.' });
     }
   });
 
@@ -110,14 +110,14 @@ app.get('/languageconverse', async (req, res) => {
 
 
 // Fetch all languageconverse
-app.get('/languageconverse', async (req, res) => {
+app.get('/culturalfood', async (req, res) => {
     try {
-      const alllanguageconverse = await languageconverse.find(); // Await the asynchronous operation
-      console.log(alllanguageconverse)
-      res.status(200).json(alllanguageconverse);
+      const alllculturalfood = await culturalfood.find(); // Await the asynchronous operation
+      console.log(alllculturalfood)
+      res.status(200).json(allculturalfood);
     } catch (error) {
-      console.error('Error fetching languageconverse:', error);
-      res.status(500).json({ message: 'Failed to fetch languageconverse.' });
+      console.error('Error fetching culturalfood:', error);
+      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
     }
   });
 
