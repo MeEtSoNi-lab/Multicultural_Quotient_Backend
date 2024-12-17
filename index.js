@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const Borndata = require('./models/borndata');
 const country = require('./models/countrydata');
 const yearsofrecidence = require('./models/yearsofrecidence');
-
+const numbercountries = require('./models/numbercountries');
+const traveledcountries=require('./models/traveledcountries');
+const languageconverse=require('./models/languageconverse');
+const culturalfood=require('./models/culturalfood');
+const contentengagement=require('./models/contentengangement');
 require('dotenv').config();
 
 const app = express();
@@ -62,8 +66,8 @@ app.get('/yearsofrecidence', async (req, res) => {
       console.log(allyearsofrecidence)
       res.status(200).json(allyearsofrecidence);
     } catch (error) {
-      console.error('Error fetching countries:', error);
-      res.status(500).json({ message: 'Failed to fetch countries.' });
+      console.error('Error fetching years:', error);
+      res.status(500).json({ message: 'Failed to fetch years.' });
     }
   });
 
