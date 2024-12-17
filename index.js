@@ -72,6 +72,18 @@ app.get('/yearsofrecidence', async (req, res) => {
   });
 
 
+// Fetch all numbercountries
+app.get('/numbercountries', async (req, res) => {
+    try {
+      const allnumbercountries = await numbercountries.find(); // Await the asynchronous operation
+      console.log(allnumbercountries)
+      res.status(200).json(allnumbercountries);
+    } catch (error) {
+      console.error('Error fetching years:', error);
+      res.status(500).json({ message: 'Failed to fetch years.' });
+    }
+  });
+
 
 // Calculate sum
 app.post('/calculate', (req, res) => {
