@@ -9,6 +9,10 @@ const traveledcountries=require('./models/traveledcountries');
 const languageconverse=require('./models/languageconverse');
 const culturalfood=require('./models/culturalfood');
 const contentengagement=require('./models/contentengangement');
+const multiculturalismbenefits= require('./models/multiculturalismbenefits');
+const disagreestatements=require('./models/disagreestatements');
+const negativestatementscale=require('./models/negativestatementscale');
+const interactionculturalgroups=require('./models/interactionculturalgroups');
 require('dotenv').config();
 
 const app = express();
@@ -134,6 +138,56 @@ app.get('/contentengagement', async (req, res) => {
   });
 
 
+// Fetch all multiculturalismbenefits
+app.get('/multiculturalismbenefits', async (req, res) => {
+    try {
+      const allmulticulturalismbenefits = await multiculturalismbenefits.find(); // Await the asynchronous operation
+      console.log(allmulticulturalismbenefits)
+      res.status(200).json(allmulticulturalismbenefits);
+    } catch (error) {
+      console.error('Error fetching culturalfood:', error);
+      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+    }
+  });
+
+// Fetch all disagreestatements
+app.get('/disagreestatements', async (req, res) => {
+    try {
+      const alldisagreestatements = await disagreestatements.find(); // Await the asynchronous operation
+      console.log(alldisagreestatements)
+      res.status(200).json(alldisagreestatements);
+    } catch (error) {
+      console.error('Error fetching culturalfood:', error);
+      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+    }
+  });
+
+// Fetch all negativestatementscale
+app.get('/negativestatementscale', async (req, res) => {
+    try {
+      const allnegativestatementscale = await negativestatementscale.find(); // Await the asynchronous operation
+      console.log(allnegativestatementscale)
+      res.status(200).json(allnegativestatementscale);
+    } catch (error) {
+      console.error('Error fetching culturalfood:', error);
+      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+    }
+  });
+
+
+// Fetch all interactionculturalgroups
+app.get('/interactionculturalgroups', async (req, res) => {
+    try {
+      const allinteractionculturalgroups = await interactionculturalgroups.find(); // Await the asynchronous operation
+      console.log(allinteractionculturalgroups)
+      res.status(200).json(allinteractionculturalgroups);
+    } catch (error) {
+      console.error('Error fetching culturalfood:', error);
+      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+    }
+  });
+
+
 // Calculate sum
 app.post('/calculate', (req, res) => {
   const { number1, number2 } = req.body;
@@ -145,6 +199,47 @@ app.post('/calculate', (req, res) => {
     res.status(400).json({ message: 'Invalid input. Please send two numbers.' });
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Root endpoint
 app.get('/', (req, res) => {
