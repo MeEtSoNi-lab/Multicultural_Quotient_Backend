@@ -13,6 +13,13 @@ const multiculturalismbenefits= require('./models/multiculturalismbenefits');
 const disagreestatements=require('./models/disagreestatements');
 const negativestatementscale=require('./models/negativestatementscale');
 const interactionculturalgroups=require('./models/interactionculturalgroups');
+const multiculturals=require('./models/multiculturals');
+const asians = require('./models/asians');
+const blacks=require('./models/black');
+const latinos=require('./models/latino');
+const middleeasterns=require('./models/middleeastern');
+const whites=require('./models/white')
+// const userRouter=require('./routes/main');
 require('dotenv').config();
 
 const app = express();
@@ -132,8 +139,8 @@ app.get('/contentengagement', async (req, res) => {
       console.log(allcontentengagement)
       res.status(200).json(allcontentengagement);
     } catch (error) {
-      console.error('Error fetching culturalfood:', error);
-      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+      console.error('Error fetching contentengagement:', error);
+      res.status(500).json({ message: 'Failed to fetch contentengagement.' });
     }
   });
 
@@ -145,8 +152,8 @@ app.get('/multiculturalismbenefits', async (req, res) => {
       console.log(allmulticulturalismbenefits)
       res.status(200).json(allmulticulturalismbenefits);
     } catch (error) {
-      console.error('Error fetching culturalfood:', error);
-      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+      console.error('Error fetching multiculturalismbenefits:', error);
+      res.status(500).json({ message: 'Failed to fetch multiculturalismbenefits.' });
     }
   });
 
@@ -157,8 +164,8 @@ app.get('/disagreestatements', async (req, res) => {
       console.log(alldisagreestatements)
       res.status(200).json(alldisagreestatements);
     } catch (error) {
-      console.error('Error fetching culturalfood:', error);
-      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+      console.error('Error fetching disagreestatements:', error);
+      res.status(500).json({ message: 'Failed to fetch disagreestatements.' });
     }
   });
 
@@ -169,8 +176,8 @@ app.get('/negativestatementscale', async (req, res) => {
       console.log(allnegativestatementscale)
       res.status(200).json(allnegativestatementscale);
     } catch (error) {
-      console.error('Error fetching culturalfood:', error);
-      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+      console.error('Error fetching negativestatementscale:', error);
+      res.status(500).json({ message: 'Failed to fetch negativestatementscale.' });
     }
   });
 
@@ -182,10 +189,87 @@ app.get('/interactionculturalgroups', async (req, res) => {
       console.log(allinteractionculturalgroups)
       res.status(200).json(allinteractionculturalgroups);
     } catch (error) {
-      console.error('Error fetching culturalfood:', error);
-      res.status(500).json({ message: 'Failed to fetch culturalfood.' });
+      console.error('Error fetching interactionculturalgroups:', error);
+      res.status(500).json({ message: 'Failed to fetch interactionculturalgroups.' });
     }
   });
+
+
+// fetch data from multiculturals table
+
+app.get('/multicultural', async (req,res) =>{
+  try{
+    const multicultural = await multiculturals.find();
+    console.log(multicultural);
+    res.status(200).json(multicultural);
+  } catch(error){
+    console.error('Error fetching multicultural data:', error);
+      res.status(500).json({ message: 'Failed to fetch multicultural data.' });
+  }
+})
+
+//fetch data from asians table
+
+app.get('/asians', async (req,res) =>{
+  try{
+    const asian = await asians.find();
+    console.log(asian);
+    res.status(200).json(asian);
+  } catch(error){
+    console.error('Error fetching asian data:', error);
+      res.status(500).json({ message: 'Failed to fetch asian data.' });
+  }
+})
+
+// fetch data from blacks table
+app.get('/blacks', async (req,res) =>{
+  try{
+    const black = await blacks.find();
+    console.log(black);
+    res.status(200).json(black);
+  } catch(error){
+    console.error('Error fetching black data:', error);
+      res.status(500).json({ message: 'Failed to fetch black data.' });
+  }
+})
+
+
+// fetch data from latinos table
+
+app.get('/latinos', async (req,res) =>{
+  try{
+    const latino = await latinos.find();
+    console.log(latino);
+    res.status(200).json(latino);
+  } catch(error){
+    console.error('Error fetching latinos data:', error);
+      res.status(500).json({ message: 'Failed to fetch latinos data.' });
+  }
+})
+
+// fetch data middleeasterns table
+app.get('/middleeasterns', async (req,res) =>{
+  try{
+    const middleeastern = await middleeasterns.find();
+    console.log(middleeastern);
+    res.status(200).json(middleeastern);
+  } catch(error){
+    console.error('Error fetching middleeastern data:', error);
+      res.status(500).json({ message: 'Failed to fetch middleeastern data.' });
+  }
+})
+
+// fetch data from whites table
+app.get('/whites', async (req,res) =>{
+  try{
+    const white = await whites.find();
+    console.log(white);
+    res.status(200).json(white);
+  } catch(error){
+    console.error('Error fetching white data:', error);
+      res.status(500).json({ message: 'Failed to fetch white data.' });
+  }
+})
 
 
 // Calculate sum
@@ -202,49 +286,11 @@ app.post('/calculate', (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Root endpoint
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
+
 
 // Start the server
 app.listen(port, () => {
