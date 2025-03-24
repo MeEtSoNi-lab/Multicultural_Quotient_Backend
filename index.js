@@ -59,6 +59,7 @@ app.get('/borndata', async (req, res) => {
 
 // Fetch all countries
 app.get('/countries', async (req, res) => {
+  console.log("Hello")
   try {
     const allCountries = await country.find(); // Await the asynchronous operation
     console.log(allCountries)
